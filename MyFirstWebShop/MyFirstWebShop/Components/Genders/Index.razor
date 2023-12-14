@@ -9,7 +9,26 @@
 @if(genders == null)
 {
     <p> ... loading</p>
+
 } else {
+
+    <table>
+        <thead>
+            <tr>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in genders)
+            {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 }
 
