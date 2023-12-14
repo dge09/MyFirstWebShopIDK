@@ -6,7 +6,12 @@
 @rendermode InteractiveAuto
 @inject UnitOfWork uow // 18 inject (gets this from programm.cs and _imports.razor)
 
+@if(genders == null)
+{
+    <p> ... loading</p>
+} else ´{
 
+}
 
 
 <h3>Genders</h3>
