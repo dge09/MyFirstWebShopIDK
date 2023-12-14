@@ -1,18 +1,19 @@
 ﻿<!-- 16 implement new page as view -->
 @page "/genders"
-@using MyFirstWebShop.Data.DTOs
-@using MyFirstWebShop.Data.Services
 
 @rendermode InteractiveAuto
 @inject UnitOfWork uow // 18 inject (gets this from programm.cs and _imports.razor)
 
-@if(genders == null)
+
+
+
+@if(genders == null) // 19 create display of data
 {
     <p> ... loading</p>
 
 } else {
 
-    <table>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Gender</th>
@@ -33,7 +34,6 @@
 }
 
 
-<h3>Genders</h3>
 
 @code {
     List<GenderSelect>? genders;
