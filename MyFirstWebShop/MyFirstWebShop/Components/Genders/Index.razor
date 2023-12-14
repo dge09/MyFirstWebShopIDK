@@ -19,12 +19,19 @@
                 <th>Gender</th>
             </tr>
         </thead>
+        <a href="" class="btn btn-primary btn-sm">Create</a>
         <tbody>
             @foreach(var item in genders)
             {
                 <tr>
                     <td>
                         @item.Title
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-secondary btn-sm">Delete</a>
                     </td>
                 </tr>
             }

@@ -1,0 +1,57 @@
+﻿<!-- 20 add edit / create Form-->
+@page "/genders/edit/{id:int?}"
+@page "/genders/edit"
+@inject UnitOfWork uow;
+<!-- no need for inject ( already added to _imports.razor) -->
+
+
+
+<h3>@title</h3>
+
+@if(genderDetail != null)
+{
+    <EditForm Model="@genderDetail" OnValidSubmit="OnSave">
+        <!-- could give a formname to EditForm to use it in java script -->
+        <DataAnnotationsValidator />
+        <div class="col-md-12 md-3">
+            <label for="Title">
+                Gendername
+            </label>
+            <InputText id="Title" @bind-Value="genderDetail.Title" class="form-control"/>
+            <ValidationMessage For="@(() => genderDetail.Title )"/>
+        </div>
+    </EditForm>
+}
+
+
+
+@code {
+
+    [Parameter]
+    public int? id { get; set; } // need to be public otherwise cant be set
+
+    private string title = "";
+    private GenderDetail? genderDetail;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id == null)
+        {
+            title = "Create";
+            genderDetail = new(); // not needed with creat => use new unset
+        }
+        else
+        {
+            title = "Edit";
+            genderDetail = await uow.GenderService.GetGender((int)id);
+        }
+
+
+    }
+
+    private void OnSave()
+    {
+        
+    }
+
+}
