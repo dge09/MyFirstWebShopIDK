@@ -1,0 +1,27 @@
+﻿<!-- 16 implement new page as view -->
+@page "/genders"
+@using MyFirstWebShop.Data.DTOs
+@using MyFirstWebShop.Data.Services
+
+@rendermode InteractiveAuto
+@inject UnitOfWork uow // 18 inject (gets this from programm.cs and _imports.razor)
+
+
+
+
+<h3>Genders</h3>
+
+@code {
+    List<GenderSelect>? genders;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        genders = await uow.GenderService.GetGenderSelect();
+
+    }
+
+
+
+
+}
